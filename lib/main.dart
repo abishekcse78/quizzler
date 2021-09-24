@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'questions.dart';
+//import 'questions.dart';
+import 'quiz_brain.dart';
+
+QuizBrain quizBrain = QuizBrain();
 
 void main() => runApp(Quizzler());
 
@@ -28,26 +31,6 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
-//   List<String> questions = [
-//     'You can lead a cow down stairs but not up stairs.',
-//     'Approximately one quarter of human bones are in the feet.',
-//     'A slug\'s blood is green.'
-//   ];
-//
-//   List<bool> answers = [
-//     false,
-//     true,
-//     true,
-//   ];
-
-  List<Question> questionbank = [
-    Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-    Question(
-        q: 'Approximately one quarter of human bones are in the feet.',
-        a: true),
-    Question(q: 'A slug\'s blood is green.', a: true),
-  ];
-
   int questionNumber = 0;
 
   @override
@@ -62,7 +45,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questionbank[questionNumber].questionText,
+                quizBrain.questionbank[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -87,7 +70,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    questionbank[questionNumber].questionAnswer;
+                    quizBrain.questionbank[questionNumber].questionAnswer;
                 if (correctAnswer == true) {
                   // 1. False is True 2. True is True 3.True is True
                   print('Right');
@@ -116,7 +99,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    questionbank[questionNumber].questionAnswer;
+                    quizBrain.questionbank[questionNumber].questionAnswer;
                 if (correctAnswer == false) {
                   // 1. True is false 2. False is false 3.false is false
 
